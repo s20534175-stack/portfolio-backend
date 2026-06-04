@@ -37,7 +37,7 @@ router.post('/', validateContact, async (req, res) => {
         }
       });
 
-      await transporter.sendMail({
+      transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: 's20534175@gmail.com',
         subject: `📬 Portfolio Contact: ${subject}`,
@@ -67,4 +67,5 @@ router.post('/', validateContact, async (req, res) => {
 });
 
 module.exports = router;
+
 
