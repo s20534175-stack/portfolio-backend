@@ -8,11 +8,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'OPTIONS'] }));
 
 // Rate limiting - protect contact form
 const contactLimiter = rateLimit({
@@ -35,3 +31,4 @@ app.get('/', (req, res) => res.json({ status: 'ok', message: 'Portfolio API is r
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
